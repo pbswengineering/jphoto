@@ -13,7 +13,6 @@ import com.drew.metadata.Tag;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.IOException;
-import java.nio.file.CopyOption;
 import java.util.List;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -95,16 +94,19 @@ public class PhotoOrganizer {
                 }
                 try {
                     if (directory.getName().equals("QuickTime") && tag.getTagName().equals("Creation Time")) {
-                        quickTimeCreation = LocalDateTime.parse(tag.getDescription(), QUICK_TIME_FORMATTER);
+                        quickTimeCreation = LocalDateTime.parse(tag.getDescription().replace("CEST", "CET"), QUICK_TIME_FORMATTER);
                     } else if (directory.getName().equals("MP4") && tag.getTagName().equals("Creation Time")) {
-                        mp4Creation = LocalDateTime.parse(tag.getDescription(), MP4_FORMATTER);
+                        mp4Creation = LocalDateTime.parse(tag.getDescription().replace("CEST", "CET"), MP4_FORMATTER);
                     } else if (directory.getName().equals("Exif SubIFD") && tag.getTagName().equals("Date/Time Original")) {
                         exifOriginal = LocalDateTime.parse(tag.getDescription(), EXIF_FORMATTER);
                     } else if (directory.getName().equals("Exif SubIFD") && tag.getTagName().equals("Date/Time Digitized")) {
                         exifDigitized = LocalDateTime.parse(tag.getDescription(), EXIF_FORMATTER);
                     }
                 } catch (DateTimeParseException ex) {
-                    // NOP
+                    if (PRINT) {
+                        System.err.println(ex);
+                        ex.printStackTrace();
+                    }
                 }
             }
         }

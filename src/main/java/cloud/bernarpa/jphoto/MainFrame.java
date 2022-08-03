@@ -208,9 +208,8 @@ public class MainFrame extends javax.swing.JFrame {
             photoImporter = new PhotoOrganizer(dirCollection, dirImport);
             // Uncomment this and comment below to test the date/time detection
             // Also, remember to set PhotoOrganizer.PRINT to true
-            //Metadata meta = ImageMetadataReader.readMetadata(new File("D:\\Photos\\Yearly\\2006\\2006-12-31 Capodanno\\Immagine 015.jpg"));
+            //Metadata meta = ImageMetadataReader.readMetadata(new File("D:\\DUMP_PHOTOS_HERE\\NoExif\\VID_20220721_202105.mp4"));
             //photoImporter.getDateTime(meta);
-            
             final MainFrame that = this;
             new Thread(() -> {
                 try {
@@ -222,7 +221,6 @@ public class MainFrame extends javax.swing.JFrame {
                     ex.printStackTrace();
                 }
             }).start();
-            
         } catch (Exception ex) {
             System.err.println("Import setup exception");
             showMessageDialog(null, ex.getMessage());

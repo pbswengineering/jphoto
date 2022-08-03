@@ -1,13 +1,13 @@
 <a href="https://www.bernardi.cloud/">
-    <img src=".readme-files/photo-logo-72.png" alt="Photo logo" title="Photo" align="right" height="72" />
+    <img src=".readme-files/photo-logo-72.png" alt="JPhoto logo" title="JPhoto" align="right" height="72" />
 </a>
 
-# Photo
+# JPhoto
 > A graphical tool to organize your (my!😉) family photo library
 
-[![Go](https://img.shields.io/badge/Go-v1.15-blue.svg)](https://golang.org/)
-[![License](https://img.shields.io/github/license/bernarpa/jphoto.svg)](https://opensource.org/licenses/GPL-3.0)
-[![GitHub issues](https://img.shields.io/github/issues/bernarpa/jphoto.svg)](https://github.com/bernarpa/jphoto/issues)
+[![Java](https://img.shields.io/badge/Java-v15-blue.svg)](https://adoptium.net/)
+[![License](https://img.shields.io/github/license/pbswengineering/jphoto.svg)](https://opensource.org/licenses/GPL-3.0)
+[![GitHub issues](https://img.shields.io/github/issues/pbswengineering/jphoto.svg)](https://github.com/pbswengineering/jphoto/issues)
 
 ## Table of contents
 
