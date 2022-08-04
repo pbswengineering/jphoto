@@ -41,6 +41,7 @@ public class AboutDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("About BERNACON Photo Organizer");
+        setModal(true);
         setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cloud/bernarpa/jphoto/bernacon.png"))); // NOI18N
@@ -60,6 +61,7 @@ public class AboutDialog extends javax.swing.JDialog {
 
         jLabel4.setText("Copyright 2022 Paolo Bernardi");
 
+        byClose.setMnemonic('C');
         byClose.setText("Close");
         byClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

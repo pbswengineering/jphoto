@@ -111,6 +111,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         btImport.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btImport.setMnemonic('O');
         btImport.setText("Organize");
         btImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,8 +124,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         lbStatus.setText("   ");
 
+        jMenu1.setMnemonic('F');
         jMenu1.setText("File");
 
+        miExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        miExit.setMnemonic('X');
         miExit.setText("Exit");
         miExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,8 +139,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setMnemonic('H');
         jMenu2.setText("Help");
 
+        miAbout.setMnemonic('A');
         miAbout.setText("About");
         miAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,9 +217,11 @@ public class MainFrame extends javax.swing.JFrame {
             //Metadata meta = ImageMetadataReader.readMetadata(new File("D:\\DUMP_PHOTOS_HERE\\NoExif\\VID_20220721_202105.mp4"));
             //photoImporter.getDateTime(meta);
             final MainFrame that = this;
+            btImport.setEnabled(false);
             new Thread(() -> {
                 try {
                     photoImporter.organizePhotos(that);
+                    btImport.setEnabled(true);
                 } catch (Exception ex) {
                     System.err.println("Import thread exception");
                     showMessageDialog(null, ex.getMessage());
