@@ -249,7 +249,8 @@ public class PhotoOrganizer {
         List<Path> photos = listPhotos(dirImport);
         Path dirDuplicates = dirImport.resolve("Duplicates");
         for (Path photo : photos) {
-            String duplicate = db.findDuplicate(photo);
+            String fingerprint = getPhotoFingerprint(photo);
+            String duplicate = db.findDuplicate(photo, fingerprint);
             if (duplicate != null) {
                 if (!Files.exists(dirDuplicates)) {
                     Files.createDirectory(dirDuplicates);
@@ -266,7 +267,7 @@ public class PhotoOrganizer {
 
     public void organizePhotos(MainFrame mainFrame) throws IOException, SQLException, ImageProcessingException, XMPException {
         fixPhotos();
-        updateFingerprints(dirImport, mainFrame);
+        //updateFingerprints(dirImport, mainFrame);
         updateFingerprints(dirCollection, mainFrame);
         removeDuplicates(mainFrame);
         mainFrame.setStatusMessage("That's all, folks!");

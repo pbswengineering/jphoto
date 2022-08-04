@@ -63,8 +63,7 @@ public class PhotoDb {
         }
     }
     
-    public String findDuplicate(Path photo) {
-        String fingerprint = getFingerprint(photo);
+    public String findDuplicate(Path photo, String fingerprint) {
         String sql = "SELECT file FROM fingerprints WHERE file NOT LIKE ? AND fingerprint LIKE ?";
         try ( PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, photo.toString());
