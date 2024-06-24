@@ -134,7 +134,13 @@ public class PhotoOrganizer {
         Path dirNoExif = dirImport.resolve("NoExif");
         Path dirOrganized = dirImport.resolve("Organized");
         for (Path photo : toImport) {
-            Metadata meta = ImageMetadataReader.readMetadata(photo.toFile());
+            Metadata meta = null;
+            try {
+                meta = ImageMetadataReader.readMetadata(photo.toFile());
+            } catch (ImageProcessingException ex) {
+                System.err.println("ImageProcessingException: " + photo);
+                continue;
+            }
             LocalDateTime dateTime = getDateTime(meta);
             if (dateTime != null) {
                 String newDirName = String.format("%d-%02d-%02d",
